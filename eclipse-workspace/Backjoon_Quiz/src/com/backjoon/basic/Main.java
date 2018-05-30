@@ -12,7 +12,8 @@ import java.util.Arrays;
 import java.util.Deque;
 
 public class Main{
-    public static void main(String[] args) throws NumberFormatException, IOException{
+    static int[] D = new int[1000005];
+	public static void main(String[] args) throws NumberFormatException, IOException{
     	int N, M = 0;
     	int[][] datas = new int[201][201];
     	String s = new String();
@@ -26,48 +27,24 @@ public class Main{
     	//M = Integer.parseInt(st.nextToken());
     	Scanner sc = new Scanner(System.in);
     	N = sc.nextInt();
+    	Dp(N);
+    	System.out.println(D[N]);
     	
+    }
+    public static int Dp(int n) {
+    	int X = 1000000, Y = 1000000;
+    	if(n == 1) 
+    		return 0;
+    	if(D[n] != 0) 
+    		return D[n];
+    	if(n%3==0)
+    		X = Dp(n/3)+1;
+    	if(n%2==0)
+    		Y = Dp(n/2)+1;
+		return D[n] = Math.min(Math.min(X,Y), Dp(n-1)+1);
     }
 }
 
-class Monkey {
-	public void mHorse(int[][] datas, int x, int y){
-		int tmp = datas[x][y];
-		
-	}
-	public void mMonkey() {
-		
-	}
-}
-0 0 0 0 1 0 0 0 1 1 0 0
-1 0 0 0 0 1 0 1 0 0 0 1
-0 0 1 0 0 0 1 0 1 1 0 1
-0 1 0 0 0 1 1 0 0 0 0 0 
-0 1 1 1 0 0 0 1 1 0 1 0
-0 0 1 1 0 1 0 0 1 0 1 0 
-1 1 1 0 1 0 0 1 0 1 0 0
-if(K==1) {
-	//말의 이동법
-	x = 0, y = 0;
-	if(datas[y][x]==1) return -1;
-	
-	if(datas[y][x+1]+datas[y][x+2]+datas[y+1][x+2] == 0)
-	{
-		x += 2, y += 1;
-		move++;
-	}	
-	else if(datas[y+1][x]+datas[y+2][x]+datas[y+2][x+1] == 0)
-	{
-		x += 1, y += 2;
-		move++;
-	}... 8가지?
-}
-else if(K>1) {
-	
-}
-else {
-	
-}
 
 /* 
 import java.io.BufferedReader;
