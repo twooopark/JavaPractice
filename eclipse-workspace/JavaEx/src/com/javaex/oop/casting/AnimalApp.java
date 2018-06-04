@@ -23,7 +23,8 @@ public class AnimalApp {
 		//또는
 		((Dog)d1).bark();
 		
-		
+
+		// 업캐스팅이 사용되는 예시이다.
 		Animal pet = new Dog("Ari");
 		pet.eat();
 		pet.walk();

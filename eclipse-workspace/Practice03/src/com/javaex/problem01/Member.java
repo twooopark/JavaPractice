@@ -5,22 +5,23 @@ public class Member {
 	private String name;
 	private int point;
 	
-	public void setId(String id){
-		
+	public String getId() {
+		return id;
 	}
-	public void getId(){
-		
-	}public void setName(String name){
-		
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void getName(){
-		
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPoint() {
+		return point;
 	}
 	public void setPoint(int point) {
-		
+		this.point = point;
 	}
-	public void getPoint() {
 		
-	}
-	
 }

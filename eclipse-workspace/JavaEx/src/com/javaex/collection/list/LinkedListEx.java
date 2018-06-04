@@ -5,7 +5,8 @@ import java.util.*;
 public class LinkedListEx {
 	public static void main(String args[]) {
 		List<String> l = new LinkedList<String>();
-		
+
+	
 		//객체 삽입
 		l.add("java");
 		l.add("c");

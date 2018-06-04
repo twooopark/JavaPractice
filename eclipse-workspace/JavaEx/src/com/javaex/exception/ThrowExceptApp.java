@@ -7,8 +7,9 @@ public class ThrowExceptApp {
 	public static void main(String[] args) {
 		ThrowsExcept except = new ThrowsExcept();
 //		except.executeException(); 
-//		--> 컴파일러가 아래와 같이 에러처리 해줘야된다고 표시 됨
+//		--> 이것만 작성하면 컴파일러가 아래와 같이 예외처리 해줘야된다고 표시 됨
 		try {
+			except.executeRuntimeException(); //--> 둘 중 먼저 있는 코드만 실행됨 ㅎㅎ;
 			except.executeException();
 		} catch(RuntimeException e) { //사용자 정의 예외처리 만들기 
 			System.out.println("Message: "+e.getMessage());

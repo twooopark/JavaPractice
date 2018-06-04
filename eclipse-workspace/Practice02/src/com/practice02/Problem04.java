@@ -9,10 +9,10 @@ public class Problem04 {
     		n = (int)(Math.random()*range)+1;
     		for(int j=0; j<i; j++) {
     			if(number[j] == n) {
-    				System.out.println("중복! "+"i:"+i+",j:"+j+"|"+number[j]+","+n);
+//    				System.out.println("중복! "+"i:"+i+",j:"+j+"|"+number[j]+","+n);
     	    		n = (int)(Math.random()*range)+1;
     				j=-1;
-    				System.out.println("중복제거");
+//    				System.out.println("중복제거");
     	    		
     			}
     		}

@@ -25,7 +25,7 @@ public class ThrowsExcept {
 //			return 0;
 //		}
 		if(num2 == 0) {
-			throw new ArithmeticException("예외 처리 위임");
+			throw new ArithmeticException();//예외 처리 위임
 		}
 		return num1 / num2;
 	}

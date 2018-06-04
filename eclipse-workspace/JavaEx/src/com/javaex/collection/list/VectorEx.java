@@ -12,7 +12,7 @@ public class VectorEx {
 		for(int i=1; i<=10; i++) {
 			v.addElement(i);
 		}
-		v.addElement(11);
+		v.addElement(100);
 		System.out.println("Size: " + v.size()
 		+ ", Capacity: " +v.capacity());
 		v.insertElementAt(123, 8);
@@ -22,7 +22,7 @@ public class VectorEx {
 		System.out.println(val);
 		System.out.println("index of 7:" + v.indexOf(7));
 		System.out.println("index of 0:" + v.indexOf(0));
-		System.out.println("contains 10:" + v.contains(10));
+		System.out.println("contains 10:" + v.contains(11));
 		
 		
 		// Iter , Enumer 둘다 가능
@@ -46,10 +46,14 @@ public class VectorEx {
 		System.out.println("Size: " + v.size()
 		+ ", Capacity: " +v.capacity());
 		
+		
+		//다양한 형식을 받아보자
 		Vector<? super Number> v2 = new Vector<>();
 		v2.addElement(Integer.valueOf(10));
 		v2.addElement(Float.valueOf(3.14159f));
-//		v2.addElement("java"); //String is not contained Number
+//		v2.addElement(Character.valueOf('a'));
+//		v2.addElement("java");
+		//these are not contained Number
 		
 		System.out.println(v2);
 

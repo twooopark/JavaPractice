@@ -22,10 +22,4 @@ public class Circle extends Shape{
 		System.out.println("x: "+x+", y: "+y+", area: "+area());
 	
 	}
-	//ObjectClass Overriding
-	public boolean equals(Circle c) {
-		if(c.radius==this.radius)
-			return true;
-		else return false;
-	}
 }

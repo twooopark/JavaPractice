@@ -29,21 +29,5 @@ public class Rectangle extends Shape{
 		System.out.println("x: "+x+", y: "+y+", w: "+width+", h: "+height+", area: "+area());
 	}
 	
-	//ObjectClass Overriding
-	public boolean equals(Object obj) {
-		if(obj instanceof Rectangle) {
-			Rectangle other = (Rectangle)obj; //다운캐스팅
-			if(this.area()==other.area())
-				return true;
-			else
-				return false;
-		}
-		else return false;
-	}
-//	public Boolean equals(Rectangle r) {
-//		if(r.area()==this.area())
-//			return true;
-//		else return false;
-//	}
 
 }

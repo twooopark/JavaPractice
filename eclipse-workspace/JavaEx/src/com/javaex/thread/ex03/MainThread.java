@@ -20,6 +20,7 @@ public class MainThread {
 		th2.start();
 		
 		
+		//th, th2가 도는동안 MainThread가 종료되지 않게 한다.
 		try {
 			th.join();
 			th2.join();

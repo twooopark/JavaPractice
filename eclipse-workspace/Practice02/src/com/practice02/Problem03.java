@@ -11,5 +11,7 @@ public class Problem03 {
 			if(c[i]==' ') c[i] = ',';
 			System.out.print(c[i]);
 		}
+		String s = String.valueOf(c);
+		System.out.print("\nchar[] to String: "+s);
     }
 }
