@@ -1,105 +1,59 @@
 package com.backjoon.basic;
 
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        int M = 0;
-        int N = 0;
-        
-        while ( N <= M || M > 10000 || N > 10000) {
-            M = sc.nextInt();
-            N = sc.nextInt();
-        }
-        
-        int sum = 0;
-        int min = 0;
-        int first = 0;
-        
-        boolean isPrime = true;
-        
-        if ( M == 1 ){
-            M = 2;
-        }
-    
-        for( int i = M; i <= N; i++ ){
-            for ( int j = 2; j < i; j++) { //소수 찾기
-                if( i == 2 ) {
-                    min = 2;
-                    sum += 2;
-                    first = 1;
-                    break;
-                }
-                
-                if ( i%j == 0 ){
-                    isPrime = false;
-                    break;
-                }
-                
-                else {
-                    isPrime = true;
-                }
-                
-            }
-            
-            if ( isPrime && first == 0 ) { //최소값
-                min = i;
-                sum += i;
-                first = 1;
-            }
-            
-            else if( isPrime ){ //소수들의 합
-                sum += i;
-            }
-        }
-        
-        if ( min == 0 ){
-            System.out.println(-1);
-        }
-        else {
-            System.out.println(sum);
-            System.out.println(min);
-        }
+    public static void main(String[] args) throws IOException {
+    	BufferedReader br = 
+    			new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer st = new StringTokenizer(br.readLine());
+    	int N = Integer.parseInt(st.nextToken());
+    	int M = Integer.parseInt(st.nextToken());
+
+    	ArrayList<Integer> tree = new ArrayList<>();
+    	// SegmentTree Capacity
+    	int K = (int) Math.ceil(Math.log(N)/Math.log(2));
+    	K = (int) Math.pow(2, K+1);
+    	
+    	// init tree
+    	for(int i=0; i<K; i++)
+    		tree.add(0x7fffffff); // this problem's num is Natural number
+    	for(int i=0; i<N; i++)
+        	tree.set(K/2+i, Integer.parseInt(br.readLine())); // Keep the Full B-Tree structure by setting leaf node
+    	for(int i=K/2-1; i>0; i--) // K/2!!!
+    		tree.set(i, Math.min(tree.get(2*i), tree.get(2*i+1))); // Set the child-node value by the parents-node value
+    	
+    	int start = 0, end = K/2-1;
+    	// Enter range(l,r)
+    	for(int i=0; i<M; i++) {
+    		st = new StringTokenizer(br.readLine());
+        	int l = Integer.parseInt(st.nextToken());
+        	int r = Integer.parseInt(st.nextToken());
+        	int result = segmentTracer(tree, l-1, r-1, start, end, 1);	
+        	System.out.println(result);
+    	}
+    	
+    	
+//    	// check tree value
+//    	Iterator it = tree.iterator();
+//    	while(it.hasNext()) {
+//    		System.out.println(it.next());
+//    	}
+    }
+    // l=left, r=right, s=start, e=end
+    static int segmentTracer(ArrayList<Integer> list, int l, int r, int s, int e, int nodeN) {
+    	if(r<s || e<l)
+    		return 0x7fffffff;
+    	if(l<=s && e<=r)
+    		return list.get(nodeN);
+    	
+    	int mid = (s+e)/2;
+    	return Math.min(segmentTracer(list, l, r, s, mid, nodeN*2), segmentTracer(list, l, r, mid+1, e, nodeN*2+1));
     }
 }
- 
-//Scanner sc = new Scanner(System.in);
-//
-//int T = sc.nextInt();  sc.nextLine();
-//String[] s = sc.nextLine().trim().split(" ");
-//for(int i = 0; i < T; i++) {
-//	int inNum = Integer.parseInt(s[i]);
-//	if(inNum < 0)
-//		Card[Math.abs(inNum)][0]++;
-//	else
-//		Card[inNum][1]++;
-//}
-//int M = sc.nextInt();
-//String rs = "";
-//for(int i = 0; i < M; i++) {
-//	int inNum = sc.nextInt();
-//	if(inNum < 0)
-//		rs += Card[Math.abs(inNum)][0]+" ";
-//	else
-//		rs += Card[inNum][1]+" ";
-//}
-//sc.nextLine();
-//System.out.println(rs.trim());
 
 /* 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
-import java.util.Stack;
-import java.util.LinkedList;
-import java.util.Iterator;
-import java.util.StringTokenizer;
-import java.util.Arrays;
-import java.util.Deque;
-
 public class Main{
     public static void main(String[] args) throws NumberFormatException, IOException{
     	int N, M = 0;
