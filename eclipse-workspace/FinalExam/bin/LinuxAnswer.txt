@@ -1,0 +1,17 @@
+과목명 : Linux Administration
+수강생 이름 : 박두리
+
+Q1. ls -al /var/log > log_dir.txt
+
+
+Q2. -name
+
+
+Q3. df -h
+
+
+Q4. su
+
+
+Q5. passwd [username]
+
