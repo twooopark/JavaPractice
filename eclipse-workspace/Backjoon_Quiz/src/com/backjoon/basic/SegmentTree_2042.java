@@ -3,7 +3,7 @@ package com.backjoon.basic;
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class SegmentTree_2042 {
     public static void main(String[] args) throws IOException {
     	BufferedReader br = 
     			new BufferedReader(new InputStreamReader(System.in));
