@@ -41,26 +41,18 @@ public class RequestHandler extends Thread {
 					break;
 				}
 			}
-			
-			
-			
-			String loc = request.split(" ")[1];
-			if(loc.equals("/"))
-				loc = "/index.html";
 
-			String loc2 = "D:/javastudy/eclipse-workspace/Network/webapp"+loc;
+			String fileName = request.split(" ")[1];
+			if(fileName.equals("/"))
+				fileName = "/index.html";
+
+			String loc = "D:/javastudy/eclipse-workspace/Network/webapp"+fileName;
 			
-//			System.out.println(loc2);
+			System.out.println(loc);
 			
-			File f = new File(loc2);
+			File f = new File(loc);
 			FileReader fd = new FileReader(f);
-			int singleCh = 0;
-			while((singleCh = fd.read()) != -1)
-				os.write((char)singleCh);
-			fd.close();
-			
-			
-			
+			br = new BufferedReader(fd);
 			
 			consoleLog(request);
 			
@@ -70,6 +62,9 @@ public class RequestHandler extends Thread {
 			os.write( "Content-Type:text/html; charset=utf-8\r\n".getBytes( "UTF-8" ) );
 			os.write( "\r\n".getBytes() );
 			os.write( "<h1>이 페이지가 잘 보이면 실습과제 SimpleHttpServer를 시작할 준비가 된 것입니다.</h1>".getBytes( "UTF-8" ) );
+			String line = null;
+			while( (line = br.readLine()) != null ) 
+				os.write(line.getBytes( "UTF-8" ));
 
 		} catch ( Exception ex ) {
 			consoleLog( "error:" + ex );
